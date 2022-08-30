@@ -8,9 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @StateObject private var VModel = ContentViewViewModel()
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        
+        NavigationView {
+        List(VModel.coinViewModels, id: \.self) {
+            coinViewModel in
+            
+            Text(coinViewModel.name + " - " + coinViewModel.price)
+            
+        } .onAppear{self.VModel.fetchCoins()}
+                .navigationBarTitle("Coins")
+    }
     }
 }
 
