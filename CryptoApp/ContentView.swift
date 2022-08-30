@@ -19,7 +19,8 @@ struct ContentView: View {
             
             Text(coinViewModel.name + " - " + coinViewModel.price)
             
-        } .onAppear{self.VModel.fetchCoins()}
+        }.listStyle(.plain)
+        .onAppear{self.VModel.fetchCoins()}
                 .navigationBarTitle("Coins")
     }
     }
